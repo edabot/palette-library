@@ -6,8 +6,7 @@ import { CSSToFastLED, paletteStringToString, paletteToStyle, updateClipboard, p
 export default function Home() {
   return (
     <div className={styles.container}>
-    <table>
-        <tbody>
+    <div className={styles.paletteList}>
           {
           palettes.map((palette, index) => {
             return (
@@ -20,8 +19,7 @@ export default function Home() {
           })
           }
           <CSSConverter />
-    </tbody>
-    </table>
+          </div>
     </div>
   )
 }
@@ -29,23 +27,20 @@ export default function Home() {
 const Palette = ({style, name, data}) => {
   const styleValue = JSON.stringify(style, null, 4);
   return (
-    <>
-    <tr>
-      <td><div className={styles.colorname}> {name}</div></td>
-      </tr>
-      <tr>
-        <td><div className={styles.colorbar} style={style}></div></td>
-        </tr><tr>
+    <div className={styles.paletteItem}>
+      <div className={styles.paletteHeader}>
+        <div className={styles.colorname}> {name}</div>
         <CopyButton name={name} data={data}/>
-      </tr>
-      </>
+      </div>
+      <div className={styles.colorbar} style={style}></div>  
+    </div>
   )
 };
 
 const CopyButton = ({name, data}) => {
   let result = `// converted for FastLED with gammas (2.6, 2.2, 2.5)\n\nDEFINE_GRADIENT_PALETTE( ${paletteNameConverter(name)} ) {\n${data}};`
   return (
-    <button onClick={() => updateClipboard(result)}>copy for FastLED</button>
+    <button onClick={() => updateClipboard(result)}>copy {name} for FastLED</button>
   )
 }
 
@@ -63,12 +58,19 @@ const CSSConverter = () => {
   }
 
   return (
-    <>
+    <div className={styles.converter}>
+      <h3>CSS to FastLED Palette conversion</h3>
+      <div className={styles.converterRow}>
       <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder="put CSS code here" />
-      <br />
-      <span style={{whiteSpace: 'pre-line'}}>
-        {result && paletteStringToString(result)}
-      </span>
-    </>
+        {result &&
+          <div className={styles.converterResult}>
+          {`DEFINE_GRADIENT_PALETTE( my_new_palette_gp ) {\n`}
+            { result }
+          {`}`}
+          </div>
+        }
+    
+        </div>
+    </div>
   )
 }

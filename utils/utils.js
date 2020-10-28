@@ -69,6 +69,7 @@ const paletteToString = p => {
 }
 
 const paletteStringToString = string => {
+  console.log(string)
   const p = string.split(',')
   return paletteToString(p)
 }
