@@ -1,65 +1,74 @@
-import Head from 'next/head'
+import React, { useState } from 'react';
 import styles from '../styles/Home.module.css'
+import { palettes } from './palettes'
+import { CSSToFastLED, paletteStringToString, paletteToStyle, updateClipboard, paletteNameConverter } from './utils'
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+    <table>
+        <tbody>
+          {
+          palettes.map((palette, index) => {
+            return (
+              <Palette 
+                key={index}
+                style={{ backgroundImage: paletteToStyle(palette.data) }} 
+                name={palette.name}
+                data={palette.data}
+/>            );
+          })
+          }
+          <CSSConverter />
+    </tbody>
+    </table>
     </div>
+  )
+}
+
+const Palette = ({style, name, data}) => {
+  const styleValue = JSON.stringify(style, null, 4);
+  return (
+    <>
+    <tr>
+      <td><div className={styles.colorname}> {name}</div></td>
+      </tr>
+      <tr>
+        <td><div className={styles.colorbar} style={style}></div></td>
+        </tr><tr>
+        <CopyButton name={name} data={data}/>
+      </tr>
+      </>
+  )
+};
+
+const CopyButton = ({name, data}) => {
+  let result = `// converted for FastLED with gammas (2.6, 2.2, 2.5)\n\nDEFINE_GRADIENT_PALETTE( ${paletteNameConverter(name)} ) {\n${data}};`
+  return (
+    <button onClick={() => updateClipboard(result)}>copy for FastLED</button>
+  )
+}
+
+const CSSConverter = () => {
+  const [code, setCode] = useState("");
+  const [result, setResult] = useState("");
+
+  const handleChange = (e) => {
+    setCode(e.target.value);
+    const regex = /(?<=deg, )[\s\S]+(?=%\))/g
+    const match = e.target.value.match(regex);
+    if (match) {
+      setResult(CSSToFastLED(match[0]))
+    }
+  }
+
+  return (
+    <>
+      <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder="put CSS code here" />
+      <br />
+      <span style={{whiteSpace: 'pre-line'}}>
+        {result && paletteStringToString(result)}
+      </span>
+    </>
   )
 }

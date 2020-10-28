@@ -1,5 +1,6 @@
 .container {
   min-height: 100vh;
+  min-width: 500px;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
@@ -119,4 +120,13 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.colorbar {
+  width: 800px;
+  height: 30px;
+}
+
+.colorname {
+  color: black;
 }
