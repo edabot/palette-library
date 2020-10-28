@@ -64,7 +64,8 @@ const CSSConverter = () => {
       <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder="put CSS code here" />
         {result &&
           <div className={styles.converterResult}>
-          {`DEFINE_GRADIENT_PALETTE( my_new_palette_gp ) {\n`}
+          {`// converted for FastLED with gammas (2.6, 2.2, 2.5)
+\nDEFINE_GRADIENT_PALETTE( my_new_palette_gp ) {\n`}
             { result }
           {`}`}
           </div>
