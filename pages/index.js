@@ -59,9 +59,9 @@ const CSSConverter = () => {
 
   return (
     <div className={styles.converter}>
-      <h3>CSS to FastLED Palette conversion</h3>
+      <h3>CSS gradient to FastLED palette conversion</h3>
       <div className={styles.converterRow}>
-      <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder="put CSS code here" />
+        <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder={`Put CSS code here\n\nexample:\nlinear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);`}/>
         {result &&
           <div className={styles.converterResult}>
           {`// converted for FastLED with gammas (2.6, 2.2, 2.5)
