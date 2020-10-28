@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Home.module.css'
-import { palettes } from './palettes'
-import { CSSToFastLED, paletteStringToString, paletteToStyle, updateClipboard, paletteNameConverter } from './utils'
+import { palettes } from '../utils/palettes'
+import { CSSToFastLED, paletteStringToString, paletteToStyle, updateClipboard, paletteNameConverter } from '../utils/utils'
 
 export default function Home() {
   return (
