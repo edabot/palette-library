@@ -9,6 +9,18 @@
   background: #e9e9e9;
 }
 
+.intro {
+  background: white;
+  padding: 1rem;
+  width: 840px;
+}
+
+.intro a {
+  
+    color: blue;
+  font-weight: 500;
+}
+
 .paletteList {
   background: white;
   padding: 1rem;
@@ -27,10 +39,12 @@
 }
 
 .converter {
+  width: 800px;
   margin-top: 1rem;
   border-top: 1px solid #ddd;
   padding-top: 1rem;
   background: white;
+  padding: 1rem;
 }
 
 .converterRow {

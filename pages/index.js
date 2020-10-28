@@ -6,7 +6,12 @@ import { CSSToFastLED, paletteStringToString, paletteToStyle, updateClipboard, p
 export default function Home() {
   return (
     <div className={styles.container}>
-    <div className={styles.paletteList}>
+      <div className={styles.intro}>
+
+      <h2>FastLED Palette Stuff</h2>
+      <p>This page is a tool I made to help with an LED project that uses palettes for FastLED. You can use the gradients in the library or convert a linear-gradient from CSS to make your own palette. You can make one at <a href="https://cssgradient.io/">CSS Gradient</a></p>
+      </div>
+      <div className={styles.paletteList}>
           {
           palettes.map((palette, index) => {
             return (
@@ -18,8 +23,8 @@ export default function Home() {
 />            );
           })
           }
-          <CSSConverter />
-          </div>
+        </div>
+        <CSSConverter />
     </div>
   )
 }
@@ -60,8 +65,12 @@ const CSSConverter = () => {
   return (
     <div className={styles.converter}>
       <h3>CSS gradient to FastLED palette conversion</h3>
+      <p>Put CSS code here</p>
       <div className={styles.converterRow}>
-        <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder={`Put CSS code here\n\nexample:\nlinear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);`}/>
+        <div>
+            
+        <textarea name="message" rows="10" cols="30" value={code} onChange={handleChange} placeholder={`example:\nlinear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);`}/>
+        </div>
         {result &&
           <div className={styles.converterResult}>
           {`// converted for FastLED with gammas (2.6, 2.2, 2.5)
