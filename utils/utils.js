@@ -29,7 +29,7 @@ const splitValues = (entry) => {
         gammaB = adjustGamma(RGB[2], ggamma)
     }
 
-    return position + ', ' + gammaR + ',' + gammaG + ',' + gammaB
+    return position + ', ' + gammaR + ', ' + gammaG + ', ' + gammaB
 }
 
 const CSSToFastLED = (string) => {
