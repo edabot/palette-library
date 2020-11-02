@@ -39,6 +39,7 @@ const CSSToFastLED = (string) => {
     console.log(first)
 
     console.log(last)
+    console.log(first.endsWith(' 0'))
     if (!first.endsWith(' 0')) {
         const newFirst = first.substring(0, first.lastIndexOf(' ')) + ' 0'
         arr.unshift(newFirst)

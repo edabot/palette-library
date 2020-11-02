@@ -73,7 +73,10 @@ const CSSConverter = () => {
         const regex = /(?<=deg, )[\s\S]+(?=%\))/g
         const match = e.target.value.match(regex)
         if (match) {
-            setResult(CSSToFastLED(match[0]))
+            setResult(`// converted for FastLED with gammas (2.6, 2.2, 2.5)
+            \nDEFINE_GRADIENT_PALETTE( my_new_palette_gp ) {\n${CSSToFastLED(
+                match[0]
+            )}};`)
         }
     }
 
@@ -93,12 +96,14 @@ const CSSConverter = () => {
                     />
                 </div>
                 {result && (
-                    <div className={styles.converterResult}>
-                        {`// converted for FastLED with gammas (2.6, 2.2, 2.5)
-\nDEFINE_GRADIENT_PALETTE( my_new_palette_gp ) {\n`}
-                        {result}
-                        {`};`}
-                    </div>
+                    <>
+                        <div className={styles.converterResult}>{result}</div>
+                        <div>
+                            <button onClick={() => updateClipboard(result)}>
+                                copy to clipboard
+                            </button>
+                        </div>
+                    </>
                 )}
             </div>
         </div>
