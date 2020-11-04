@@ -1,93 +1,110 @@
 .container {
-  min-height: 100vh;
-  min-width: 500px;
-  width: 80%;
-  max-width: 900px;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #e9e9e9;
-  margin: 0 auto;
+    min-height: 100vh;
+    min-width: 500px;
+    width: 80%;
+    max-width: 900px;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e9e9e9;
+    margin: 0 auto;
 }
 
 .intro {
-  width: 100%;
-  background: white;
-  padding: 1rem;
-  margin-bottom: 1rem;
+    width: 100%;
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 .intro a {
-  color: blue;
-  font-weight: 500;
+    color: blue;
+    font-weight: 500;
 }
 
 .paletteList {
-  width: 100%;
-  background: white;
-  padding: 1rem;
+    width: 100%;
+    background: white;
+    padding: 1rem;
 }
 
 .paletteItem {
-  width: 100%;
-  padding: .5rem 0;
+    width: 100%;
+    padding: 0.5rem 0;
 }
 
 .paletteHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 8px;
 }
 
 .converter {
-  width: 100%;
-  margin-top: 1rem;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
-  background: white;
-  padding: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+    background: white;
+    padding: 1rem;
 }
 
 .converterRow {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .converterResult {
-  white-space: pre-line;
-  padding: 1rem;
-  margin-left: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+    white-space: pre-line;
+    padding: 1rem;
+    margin-left: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    padding: 5rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 800px;
+    margin-top: 3rem;
 }
 
 .colorbar {
-  width: 100%;
-  height: 30px;
+    width: 100%;
+    height: 30px;
 }
 
 .colorname {
-  color: black;
+    color: black;
+}
+
+.copybutton {
+    border: 1px solid black;
+    background-color: azure;
+    color: white;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.gammaInput {
+    padding: 0 5px;
+    margin: 0 15px 0 5px;
+    width: 40px;
 }

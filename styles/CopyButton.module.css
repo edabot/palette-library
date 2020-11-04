@@ -1,0 +1,13 @@
+.copybutton {
+    border: 1px solid #666;
+    background-color: azure;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: azure;
+    color: #666;
+}

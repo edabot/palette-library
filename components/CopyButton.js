@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { updateClipboard } from '../utils/utils'
+import styles from '../styles/CopyButton.module.css'
 
 const CopyButton = ({ text, data }) => {
     const [clicked, setClicked] = useState(false)
@@ -11,7 +12,10 @@ const CopyButton = ({ text, data }) => {
     }
 
     return (
-        <button onClick={() => HandleClick()}>
+        <button
+            className={`${styles.copybutton} ${clicked ? styles.clicked : ''}`}
+            onClick={() => HandleClick()}
+        >
             {clicked && 'copied'}
             {!clicked && text}
         </button>

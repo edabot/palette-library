@@ -12,34 +12,31 @@ const adjustGamma = (orig, gamma) => {
     return res
 }
 
-const splitValues = (entry) => {
+const splitValues = (entry, gammas) => {
     const arr = entry.split(' ')
     const position = Math.round(parseInt(arr[1]) * 2.55)
     const RGBValues = arr[0]
     let gammaR, gammaG, gammaB
 
     if (RGBValues.startsWith('#')) {
-        gammaR = adjustGamma(parseInt(RGBValues.substring(1, 3), 16), rgamma)
-        gammaG = adjustGamma(parseInt(RGBValues.substring(3, 5), 16), bgamma)
-        gammaB = adjustGamma(parseInt(RGBValues.substring(5, 7), 16), ggamma)
+        gammaR = adjustGamma(parseInt(RGBValues.substring(1, 3), 16), gammas.R)
+        gammaG = adjustGamma(parseInt(RGBValues.substring(3, 5), 16), gammas.G)
+        gammaB = adjustGamma(parseInt(RGBValues.substring(5, 7), 16), gammas.B)
     } else {
         const RGB = RGBValues.substring(5).split(',')
-        gammaR = adjustGamma(RGB[0], rgamma)
-        gammaG = adjustGamma(RGB[1], bgamma)
-        gammaB = adjustGamma(RGB[2], ggamma)
+        gammaR = adjustGamma(RGB[0], gammas.R)
+        gammaG = adjustGamma(RGB[1], gammas.G)
+        gammaB = adjustGamma(RGB[2], gammas.B)
     }
 
     return position + ', ' + gammaR + ', ' + gammaG + ', ' + gammaB
 }
 
-const CSSToFastLED = (string) => {
+const CSSToFastLED = (string, gammas) => {
     let arr = string.split('%, ')
     const first = arr[0]
     const last = arr[arr.length - 1]
-    console.log(first)
 
-    console.log(last)
-    console.log(first.endsWith(' 0'))
     if (!first.endsWith(' 0')) {
         const newFirst = first.substring(0, first.lastIndexOf(' ')) + ' 0'
         arr.unshift(newFirst)
@@ -48,10 +45,9 @@ const CSSToFastLED = (string) => {
         const newLast = last.substring(0, last.lastIndexOf(' ')) + ' 100'
         arr.push(newLast)
     }
-    console.log(arr)
     let result = ''
     for (let i = 0; i < arr.length; i++) {
-        result += splitValues(arr[i])
+        result += splitValues(arr[i], gammas)
         if (i < arr.length - 1) {
             result += ','
         }
