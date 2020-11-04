@@ -7,6 +7,7 @@ import {
     updateClipboard,
     paletteNameConverter,
 } from '../utils/utils'
+import { CopyButton } from '../components/CopyButton'
 
 export default function Home() {
     return (
@@ -46,22 +47,18 @@ const Palette = ({ style, name, data }) => {
         <div className={styles.paletteItem}>
             <div className={styles.paletteHeader}>
                 <div className={styles.colorname}> {name}</div>
-                <CopyButton name={name} data={data} />
+                <CopyPalette name={name} data={data} />
             </div>
             <div className={styles.colorbar} style={style}></div>
         </div>
     )
 }
 
-const CopyButton = ({ name, data }) => {
-    let result = `// converted for FastLED with gammas (2.6, 2.2, 2.5)\n\nDEFINE_GRADIENT_PALETTE( ${paletteNameConverter(
+const CopyPalette = ({ name, data }) => {
+    let convertedData = `// converted for FastLED with gammas (2.6, 2.2, 2.5)\n\nDEFINE_GRADIENT_PALETTE( ${paletteNameConverter(
         name
     )} ) {\n${data}};`
-    return (
-        <button onClick={() => updateClipboard(result)}>
-            copy {name} for FastLED
-        </button>
-    )
+    return <CopyButton text={`copy ${name} for FastLED`} data={convertedData} />
 }
 
 const CSSConverter = () => {
@@ -99,9 +96,10 @@ const CSSConverter = () => {
                     <>
                         <div className={styles.converterResult}>{result}</div>
                         <div>
-                            <button onClick={() => updateClipboard(result)}>
-                                copy to clipboard
-                            </button>
+                            <CopyButton
+                                text={'copy to clipboard'}
+                                data={result}
+                            />
                         </div>
                     </>
                 )}
