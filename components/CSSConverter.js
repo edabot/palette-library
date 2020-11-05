@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CopyButton } from './CopyButton'
 import { CSSToFastLED } from '../utils/utils'
 import styles from '../styles/Home.module.css'
@@ -24,18 +24,37 @@ const CSSConverter = () => {
     }
 
     const handleGammaChange = (e) => {
-        const newValue = parseFloat(e.target.value)
+        const newValue = parseFloat(e.target.value || 0)
         const color = e.target.name
-        if (color === 'R') {
-            setGammas({ R: newValue, G: gammas.G, B: gammas.B })
-        }
-        if (color === 'G') {
-            setGammas({ R: gammas.R, G: newValue, B: gammas.B })
-        }
-        if (color === 'B') {
-            setGammas({ R: gammas.R, G: gammas.G, B: newValue })
+        setGammas({ ...gammas, [color]: newValue })
+    }
+
+    const handleGammaIncrement = (color, value) => {
+        const newValue = gammas[color] + value
+        setGammas({ ...gammas, [color]: newValue })
+    }
+
+    const downHandler = (e) => {
+        console.log(gammas)
+        debugger
+        const color = e.target.name
+        if ('RGB'.includes(color)) {
+            if (e.key === 'ArrowUp') {
+                handleGammaIncrement(color, 0.1)
+            }
+            if (e.key === 'ArrowDown') {
+                handleGammaIncrement(color, -0.1)
+            }
         }
     }
+
+    useEffect(() => {
+        window.addEventListener('keydown', downHandler)
+        // Remove event listeners on cleanup
+        return () => {
+            window.removeEventListener('keydown', downHandler)
+        }
+    }, []) // Empty array ensures that effect is only run on mount and unmount
 
     return (
         <div className={styles.converter}>
@@ -53,26 +72,20 @@ const CSSConverter = () => {
                     />
                     <div>
                         <h4>Gamma values</h4>
-                        R
-                        <input
-                            className={styles.gammaInput}
-                            value={gammas.R}
+                        <GammaInput
                             name={'R'}
-                            onChange={handleGammaChange}
+                            value={gammas.R}
+                            handleGammaChange={handleGammaChange}
                         />
-                        G
-                        <input
-                            className={styles.gammaInput}
-                            value={gammas.G}
+                        <GammaInput
                             name={'G'}
-                            onChange={handleGammaChange}
+                            value={gammas.G}
+                            handleGammaChange={handleGammaChange}
                         />
-                        B
-                        <input
-                            className={styles.gammaInput}
-                            value={gammas.B}
+                        <GammaInput
                             name={'B'}
-                            onChange={handleGammaChange}
+                            value={gammas.B}
+                            handleGammaChange={handleGammaChange}
                         />
                     </div>
                 </div>
@@ -89,6 +102,20 @@ const CSSConverter = () => {
                 )}
             </div>
         </div>
+    )
+}
+
+const GammaInput = ({ name, value, handleGammaChange }) => {
+    return (
+        <>
+            {name}
+            <input
+                className={styles.gammaInput}
+                value={value}
+                name={name}
+                onChange={handleGammaChange}
+            />
+        </>
     )
 }
 
