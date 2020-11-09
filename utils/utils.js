@@ -100,6 +100,20 @@ const paletteNameConverter = (name) => {
     return name.replace(/\s/g, '_').toLowerCase() + '_gp'
 }
 
+const wheelStyle = (colorArray) => {
+    let result = 'conic-gradient('
+    for (let i = 0; i < colorArray.length; i++) {
+        const item = colorArray[i]
+        const nextItem = colorArray[i + 1]
+        result += `${item.color} ${item.position}%`
+        if (nextItem) {
+            result += ` ${nextItem.position}%, `
+        }
+    }
+    result += ')'
+    return result
+}
+
 export {
     adjustGamma,
     CSSToFastLED,
@@ -108,4 +122,5 @@ export {
     paletteToStyle,
     updateClipboard,
     paletteNameConverter,
+    wheelStyle,
 }
