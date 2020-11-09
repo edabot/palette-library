@@ -100,16 +100,25 @@ const paletteNameConverter = (name) => {
     return name.replace(/\s/g, '_').toLowerCase() + '_gp'
 }
 
-const wheelStyle = (colorArray) => {
+const wheelStyle = (colorArray, multiple) => {
+    let newArray = []
+    for (let i = 0; i < multiple; i++) {
+        newArray = [...newArray, ...colorArray]
+    }
+
     let result = 'conic-gradient('
-    for (let i = 0; i < colorArray.length; i++) {
-        const item = colorArray[i]
-        const nextItem = colorArray[i + 1]
-        result += `${item.color} ${item.position}%`
+
+    for (let i = 0; i < newArray.length; i++) {
+        const shift1 = Math.floor(i / colorArray.length) * 100
+        const shift2 = Math.floor((i + 1) / colorArray.length) * 100
+        const item = newArray[i]
+        const nextItem = newArray[i + 1]
+        result += `${item.color} ${(item.position + shift1) / multiple}%`
         if (nextItem) {
-            result += ` ${nextItem.position}%, `
+            result += ` ${(nextItem.position + shift2) / multiple}%, `
         }
     }
+
     result += ')'
     return result
 }

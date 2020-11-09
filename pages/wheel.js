@@ -22,6 +22,7 @@ export default function Wheel() {
     const [colors, setColors] = useState(defaultColors)
     const [pickerIndex, setPickerIndex] = useState(0)
     const [spinning, setSpinning] = useState(false)
+    const [multiple, setMultiple] = useState(2)
 
     const addColor = () => {
         let colorList = [...colors]
@@ -39,7 +40,7 @@ export default function Wheel() {
 
     const updateColor = (color, position, index) => {
         let colorList = [...colors]
-        colorList[index] = { color, position }
+        colorList[index] = { color, position: parseInt(position) }
         colorList = sortColors(colorList)
         setColors(colorList)
     }
@@ -57,7 +58,7 @@ export default function Wheel() {
             <div
                 className={styles.wheel}
                 style={{
-                    background: wheelStyle(colors),
+                    background: wheelStyle(colors, multiple),
                     animation: spinning ? '' : 'x',
                 }}
             >
@@ -66,6 +67,7 @@ export default function Wheel() {
             <div onClick={changeSpinning} className={styles.spinButton}>
                 spin
             </div>
+            <MultiplePicker setMultiple={setMultiple} />
 
             <div className={styles.colorArea}>
                 <div className={styles.colorItemList}>
@@ -150,6 +152,32 @@ const ColorItem = ({
                 />
             </div>
             <button onClick={handleCopyColor}>copy</button>
+        </div>
+    )
+}
+
+const MultiplePicker = ({ setMultiple }) => {
+    const handleSelection = (e) => {
+        setMultiple(e.target.value)
+    }
+
+    return (
+        <div className={styles.multiples}>
+            <button onClick={handleSelection} value={1}>
+                x1
+            </button>
+            <button onClick={handleSelection} value={2}>
+                x2
+            </button>
+            <button onClick={handleSelection} value={3}>
+                x3
+            </button>
+            <button onClick={handleSelection} value={4}>
+                x4
+            </button>
+            <button onClick={handleSelection} value={5}>
+                x5
+            </button>
         </div>
     )
 }
