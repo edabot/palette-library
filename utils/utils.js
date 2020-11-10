@@ -108,9 +108,9 @@ const wheelStyle = (colorArray, multiple) => {
     for (let i = 0; i < newArray.length; i++) {
         const item = newArray[i]
         const nextItem = newArray[i + 1]
-        result += `${item.color} ${item.position}%`
+        result += `${item.color} ${Math.floor(item.position * 10) / 10}%`
         if (nextItem) {
-            result += ` ${nextItem.position}%, `
+            result += ` ${Math.floor(nextItem.position * 10) / 10}%, `
         }
     }
 
@@ -119,12 +119,15 @@ const wheelStyle = (colorArray, multiple) => {
 }
 
 const wheelStyleFastLed = (colorArray, multiple) => {
-    let newArray = multiplyColorArray(colorArray, multiple)
+    let newArray = [...colorArray]
 
     if (newArray[0].position !== 0) {
         const newFirst = { ...newArray[0], position: 0 }
         newArray.unshift(newFirst)
     }
+
+    newArray = multiplyColorArray(newArray, multiple)
+
     if (newArray[newArray.length - 1].position !== 100) {
         const newLast = { ...newArray[newArray.length - 1], position: 100 }
         newArray.push(newLast)
