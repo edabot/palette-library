@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Wheel.module.css'
-import { wheelStyle } from '../utils/utils'
+import { wheelStyle, wheelStyleFastLed } from '../utils/utils'
 import { ChromePicker } from 'react-color'
 
 const defaultColors = [
@@ -26,7 +26,7 @@ export default function Wheel() {
 
     const addColor = () => {
         let colorList = [...colors]
-        colorList.push({ color: '#aaa', position: undefined })
+        colorList.push({ color: '#a0a0a0', position: undefined })
         colorList = sortColors(colorList)
         setColors(colorList)
     }
@@ -42,6 +42,14 @@ export default function Wheel() {
         let colorList = [...colors]
         colorList[index] = { color, position: parseInt(position) }
         colorList = sortColors(colorList)
+        setColors(colorList)
+    }
+
+    const deleteColor = (index) => {
+        let colorList = [...colors.slice(0, index), ...colors.slice(index + 1)]
+        if (pickerIndex === colors.length - 1) {
+            setPickerIndex(pickerIndex - 1)
+        }
         setColors(colorList)
     }
 
@@ -82,6 +90,7 @@ export default function Wheel() {
                                 updateColor={updateColor}
                                 setPickerIndex={setPickerIndex}
                                 copyColor={copyColor}
+                                deleteColor={deleteColor}
                             />
                         )
                     })}
@@ -91,11 +100,17 @@ export default function Wheel() {
                 </div>
                 <div>
                     <ChromePicker
-                        color={colors[pickerIndex].color}
+                        color={
+                            colors[pickerIndex] ? colors[pickerIndex].color : ''
+                        }
                         onChange={handleChangeComplete}
                         disableAlpha
                     />
                 </div>
+            </div>
+            <div>{wheelStyle(colors, multiple)}</div>
+            <div className={styles.converterResult}>
+                {wheelStyleFastLed(colors, multiple)}
             </div>
         </div>
     )
@@ -108,10 +123,11 @@ const ColorItem = ({
     pickerIndex,
     copyColor,
     updateColor,
+    deleteColor,
     setPickerIndex,
 }) => {
     const handlePositionChange = (e) => {
-        updateColor(color, e.target.value, index)
+        console.log('old')
     }
 
     const handleDivClick = () => {
@@ -120,6 +136,14 @@ const ColorItem = ({
 
     const handleCopyColor = () => {
         copyColor(color, position)
+    }
+    const handleDeleteColor = () => {
+        deleteColor(index)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        updateColor(color, e.currentTarget[0].value, index)
     }
 
     const style = {}
@@ -142,16 +166,20 @@ const ColorItem = ({
             ></div>
             <div className={styles.colorHex}>{color}</div>
             <div className={styles.colorInput}>
-                <span>position:</span>
-                <input
-                    value={position}
-                    type="number"
-                    min="0"
-                    max="100"
-                    onChange={handlePositionChange}
-                />
+                <form onSubmit={handleSubmit}>
+                    <span>position:</span>
+                    <input
+                        placeholder={position}
+                        type="number"
+                        min="0"
+                        max="100"
+                        onChange={handlePositionChange}
+                    />
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
             <button onClick={handleCopyColor}>copy</button>
+            <button onClick={handleDeleteColor}>delete</button>
         </div>
     )
 }
@@ -177,6 +205,9 @@ const MultiplePicker = ({ setMultiple }) => {
             </button>
             <button onClick={handleSelection} value={5}>
                 x5
+            </button>
+            <button onClick={handleSelection} value={6}>
+                x6
             </button>
         </div>
     )

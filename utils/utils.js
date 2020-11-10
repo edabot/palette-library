@@ -101,26 +101,70 @@ const paletteNameConverter = (name) => {
 }
 
 const wheelStyle = (colorArray, multiple) => {
-    let newArray = []
-    for (let i = 0; i < multiple; i++) {
-        newArray = [...newArray, ...colorArray]
-    }
+    let newArray = multiplyColorArray(colorArray, multiple)
 
     let result = 'conic-gradient('
 
     for (let i = 0; i < newArray.length; i++) {
-        const shift1 = Math.floor(i / colorArray.length) * 100
-        const shift2 = Math.floor((i + 1) / colorArray.length) * 100
         const item = newArray[i]
         const nextItem = newArray[i + 1]
-        result += `${item.color} ${(item.position + shift1) / multiple}%`
+        result += `${item.color} ${item.position}%`
         if (nextItem) {
-            result += ` ${(nextItem.position + shift2) / multiple}%, `
+            result += ` ${nextItem.position}%, `
         }
     }
 
     result += ')'
     return result
+}
+
+const wheelStyleFastLed = (colorArray, multiple) => {
+    let newArray = multiplyColorArray(colorArray, multiple)
+
+    if (newArray[0].position !== 0) {
+        const newFirst = { ...newArray[0], position: 0 }
+        newArray.unshift(newFirst)
+    }
+    if (newArray[newArray.length - 1].position !== 100) {
+        const newLast = { ...newArray[newArray.length - 1], position: 100 }
+        newArray.push(newLast)
+    }
+
+    let result = ''
+    for (let i = 0; i < newArray.length; i++) {
+        result += processWheelColor(newArray[i], { R: 2.6, G: 2.2, B: 2.5 })
+        if (i < newArray.length - 1) {
+            result += ','
+        }
+        result += '\n'
+    }
+    return result
+}
+
+const processWheelColor = (item, gammas) => {
+    const position = Math.round(parseInt(item.position) * 2.55)
+    const hex = item.color
+    let gammaR, gammaG, gammaB
+
+    gammaR = adjustGamma(parseInt(hex.substring(1, 3), 16), gammas.R)
+    gammaG = adjustGamma(parseInt(hex.substring(3, 5), 16), gammas.G)
+    gammaB = adjustGamma(parseInt(hex.substring(5, 7), 16), gammas.B)
+
+    return position + ', ' + gammaR + ', ' + gammaG + ', ' + gammaB
+}
+
+const multiplyColorArray = (colorArray, multiple) => {
+    let newArray = []
+    for (let i = 0; i < multiple; i++) {
+        const newColorArray = [...colorArray].map((c) => {
+            return {
+                color: c.color,
+                position: (c.position + i * 100) / multiple,
+            }
+        })
+        newArray = [...newArray, ...newColorArray]
+    }
+    return newArray
 }
 
 export {
@@ -132,4 +176,5 @@ export {
     updateClipboard,
     paletteNameConverter,
     wheelStyle,
+    wheelStyleFastLed,
 }
