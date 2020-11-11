@@ -121,7 +121,7 @@ const wheelStyle = (colorArray, multiple) => {
     return result
 }
 
-const wheelStyleFastLed = (colorArray, multiple) => {
+const wheelStyleFastLed = (colorArray, multiple, blocks) => {
     let newArray = [...colorArray].filter(
         (x) => typeof x.position !== 'undefined'
     )
@@ -140,6 +140,12 @@ const wheelStyleFastLed = (colorArray, multiple) => {
 
     let result = ''
     for (let i = 0; i < newArray.length; i++) {
+        if (i > 0) {
+            const prevItem = newArray[i - 1]
+            prevItem.position = newArray[i].position
+            result += processWheelColor(prevItem, { R: 2.6, G: 2.2, B: 2.5 })
+            result += ',\n'
+        }
         result += processWheelColor(newArray[i], { R: 2.6, G: 2.2, B: 2.5 })
         if (i < newArray.length - 1) {
             result += ','

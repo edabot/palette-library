@@ -101,10 +101,10 @@ export default function Wheel() {
                     {wheelStyle(colors, multiple)}
                 </div>
                 <div className={styles.converterResult}>
-                    {wheelStyleFastLed(colors, multiple)}
+                    {wheelStyleFastLed(colors, multiple, true)}
                     <CopyButton
                         text={'copy FastLED code'}
-                        data={wheelStyleFastLed(colors, multiple)}
+                        data={wheelStyleFastLed(colors, multiple, true)}
                     />
                 </div>
             </div>
