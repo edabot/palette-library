@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import styles from '../styles/Wheel.module.css'
 import { wheelStyle, wheelStyleFastLed } from '../utils/utils'
 import { ChromePicker } from 'react-color'
+import MultiplePicker from '../components/MultiplePicker'
+import ColoritemList from '../components/ColoritemList'
+import CopyButton from '../components/CopyButton'
 
 const defaultColors = [
     {
@@ -73,142 +76,38 @@ export default function Wheel() {
                 <div className={styles.wheelCenter}></div>
             </div>
             <div onClick={changeSpinning} className={styles.spinButton}>
-                spin
+                spin ↺
             </div>
-            <MultiplePicker setMultiple={setMultiple} />
+            <MultiplePicker setMultiple={setMultiple} multiple={multiple} />
 
             <div className={styles.colorArea}>
-                <div className={styles.colorItemList}>
-                    {colors.map((color, index) => {
-                        return (
-                            <ColorItem
-                                color={color.color}
-                                position={color.position}
-                                index={index}
-                                pickerIndex={pickerIndex}
-                                key={index}
-                                updateColor={updateColor}
-                                setPickerIndex={setPickerIndex}
-                                copyColor={copyColor}
-                                deleteColor={deleteColor}
-                            />
-                        )
-                    })}
-                    <div onClick={addColor} className={styles.addColor}>
-                        + add color
-                    </div>
+                <ColoritemList
+                    colors={colors}
+                    pickerIndex={pickerIndex}
+                    updateColor={updateColor}
+                    setPickerIndex={setPickerIndex}
+                    copyColor={copyColor}
+                    deleteColor={deleteColor}
+                    addColor={addColor}
+                />
+                <ChromePicker
+                    color={colors[pickerIndex] ? colors[pickerIndex].color : ''}
+                    onChange={handleChangeComplete}
+                    disableAlpha
+                />
+            </div>
+            <div className={styles.wheelCodes}>
+                <div className={styles.wheelCSS}>
+                    {wheelStyle(colors, multiple)}
                 </div>
-                <div>
-                    <ChromePicker
-                        color={
-                            colors[pickerIndex] ? colors[pickerIndex].color : ''
-                        }
-                        onChange={handleChangeComplete}
-                        disableAlpha
+                <div className={styles.converterResult}>
+                    {wheelStyleFastLed(colors, multiple)}
+                    <CopyButton
+                        text={'copy FastLED code'}
+                        data={wheelStyleFastLed(colors, multiple)}
                     />
                 </div>
             </div>
-            <div>{wheelStyle(colors, multiple)}</div>
-            <div className={styles.converterResult}>
-                {wheelStyleFastLed(colors, multiple)}
-            </div>
-        </div>
-    )
-}
-
-const ColorItem = ({
-    color,
-    position,
-    index,
-    pickerIndex,
-    copyColor,
-    updateColor,
-    deleteColor,
-    setPickerIndex,
-}) => {
-    const handlePositionChange = (e) => {
-        console.log('old')
-    }
-
-    const handleDivClick = () => {
-        setPickerIndex(index)
-    }
-
-    const handleCopyColor = () => {
-        copyColor(color, position)
-    }
-    const handleDeleteColor = () => {
-        deleteColor(index)
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        updateColor(color, e.currentTarget[0].value, index)
-        e.target.reset()
-    }
-
-    const style = {}
-
-    if (index === pickerIndex) {
-        style['border'] = `2px solid #666`
-    }
-
-    return (
-        <div
-            onClick={handleDivClick}
-            className={styles.colorItem}
-            style={style}
-        >
-            <div
-                className={styles.colorBox}
-                style={{
-                    backgroundColor: color,
-                }}
-            ></div>
-            <div className={styles.colorHex}>{color}</div>
-            <div className={styles.colorInput}>
-                <form onSubmit={handleSubmit}>
-                    <span>position:</span>
-                    <input
-                        placeholder={position}
-                        type="number"
-                        min="0"
-                        max="100"
-                        onChange={handlePositionChange}
-                    />
-                </form>
-            </div>
-            <button onClick={handleCopyColor}>copy</button>
-            <button onClick={handleDeleteColor}>delete</button>
-        </div>
-    )
-}
-
-const MultiplePicker = ({ setMultiple }) => {
-    const handleSelection = (e) => {
-        setMultiple(e.target.value)
-    }
-
-    return (
-        <div className={styles.multiples}>
-            <button onClick={handleSelection} value={1}>
-                x1
-            </button>
-            <button onClick={handleSelection} value={2}>
-                x2
-            </button>
-            <button onClick={handleSelection} value={3}>
-                x3
-            </button>
-            <button onClick={handleSelection} value={4}>
-                x4
-            </button>
-            <button onClick={handleSelection} value={5}>
-                x5
-            </button>
-            <button onClick={handleSelection} value={6}>
-                x6
-            </button>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import { palettes } from '../utils/palettes'
 import { paletteToStyle, paletteNameConverter } from '../utils/utils'
-import { CopyButton } from '../components/CopyButton'
+import CopyButton from '../components/CopyButton'
 import { CSSConverter } from '../components/CSSConverter'
 
 export default function Home() {

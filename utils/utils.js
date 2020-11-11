@@ -101,7 +101,8 @@ const paletteNameConverter = (name) => {
 }
 
 const wheelStyle = (colorArray, multiple) => {
-    let newArray = multiplyColorArray(colorArray, multiple)
+    newArray = [...colorArray].filter((x) => typeof x.position !== 'undefined')
+    let newArray = multiplyColorArray(newArray, multiple)
 
     let result = 'conic-gradient('
 
@@ -119,7 +120,9 @@ const wheelStyle = (colorArray, multiple) => {
 }
 
 const wheelStyleFastLed = (colorArray, multiple) => {
-    let newArray = [...colorArray]
+    let newArray = [...colorArray].filter(
+        (x) => typeof x.position !== 'undefined'
+    )
 
     if (newArray[0].position !== 0) {
         const newFirst = { ...newArray[0], position: 0 }
