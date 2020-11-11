@@ -144,6 +144,7 @@ const ColorItem = ({
     const handleSubmit = (e) => {
         e.preventDefault()
         updateColor(color, e.currentTarget[0].value, index)
+        e.target.reset()
     }
 
     const style = {}
@@ -175,7 +176,6 @@ const ColorItem = ({
                         max="100"
                         onChange={handlePositionChange}
                     />
-                    <input type="submit" value="Submit" />
                 </form>
             </div>
             <button onClick={handleCopyColor}>copy</button>
