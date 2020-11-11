@@ -101,8 +101,10 @@ const paletteNameConverter = (name) => {
 }
 
 const wheelStyle = (colorArray, multiple) => {
-    newArray = [...colorArray].filter((x) => typeof x.position !== 'undefined')
-    let newArray = multiplyColorArray(newArray, multiple)
+    let newArray = [...colorArray].filter(
+        (x) => typeof x.position !== 'undefined'
+    )
+    newArray = multiplyColorArray(newArray, multiple)
 
     let result = 'conic-gradient('
 
