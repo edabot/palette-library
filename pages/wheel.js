@@ -105,6 +105,7 @@ export default function Wheel() {
                         text={'copy FastLED code'}
                         data={wheelStyleFastLed(colors, multiple, true)}
                     />
+                    <br />
                     {wheelStyleFastLed(colors, multiple, true)}
                 </div>
             </div>
