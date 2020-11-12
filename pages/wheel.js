@@ -66,14 +66,16 @@ export default function Wheel() {
 
     return (
         <div className={styles.container}>
-            <div
-                className={styles.wheel}
-                style={{
-                    background: wheelStyle(colors, multiple),
-                    animation: spinning ? '' : 'x',
-                }}
-            >
-                <div className={styles.wheelCenter}></div>
+            <div className={styles.wheelContainer}>
+                <div
+                    className={styles.wheel}
+                    style={{
+                        background: wheelStyle(colors, multiple),
+                        animation: spinning ? '' : 'x',
+                    }}
+                >
+                    <div className={styles.wheelCenter}></div>
+                </div>
             </div>
             <div onClick={changeSpinning} className={styles.spinButton}>
                 spin ↺

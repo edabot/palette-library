@@ -66,16 +66,16 @@ const ColorItem = ({
             </div>
             <div>
                 <button
-                    className={styles.colorItemButton}
+                    className={styles.colorItemCopy}
                     onClick={handleCopyColor}
                 >
                     copy
                 </button>
                 <button
-                    className={styles.colorItemButton}
+                    className={styles.colorItemDelete}
                     onClick={handleDeleteColor}
                 >
-                    delete
+                    X
                 </button>
             </div>
         </div>

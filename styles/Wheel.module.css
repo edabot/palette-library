@@ -11,6 +11,13 @@
     margin: 0 auto;
 }
 
+.wheelContainer {
+    background-color: black;
+    padding: 2rem 0;
+    width: 500px;
+    border-radius: 10px;
+}
+
 .wheel {
     width: 400px;
     height: 400px;
@@ -19,7 +26,7 @@
     align-items: center;
     justify-content: center;
     animation: rotation 4s infinite linear;
-    margin-bottom: 1rem;
+    margin: 0 auto;
 }
 
 @keyframes rotation {
@@ -73,8 +80,22 @@
     margin-right: 20px;
 }
 
-.colorItemButton {
+.colorItemCopy {
     margin-left: 0.5rem;
+    background-color: white;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 2px 6px;
+}
+
+.colorItemDelete {
+    background-color: #da5454;
+    padding: 3px 6px;
+    color: white;
+    font-weight: 700;
+    border: none;
+    border-radius: 20%;
+    margin-left: 1rem;
 }
 
 .colorItemList {
@@ -84,6 +105,7 @@
 
 .colorBox {
     border-radius: 3px;
+    border: 1px solid #aaa;
     height: 20px;
     width: 80px;
     margin-right: 10px;
