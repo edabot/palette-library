@@ -5,6 +5,7 @@ import { ChromePicker } from 'react-color'
 import MultiplePicker from '../components/MultiplePicker'
 import ColoritemList from '../components/ColoritemList'
 import CopyButton from '../components/CopyButton'
+import wheels from '../utils/wheelLibrary'
 
 const defaultColors = [
     {
@@ -56,6 +57,11 @@ export default function Wheel() {
         setColors(colorList)
     }
 
+    const loadWheel = ({ multiple, colorList }) => {
+        setMultiple(multiple)
+        setColors(colorList)
+    }
+
     const handleChangeComplete = (color) => {
         updateColor(color.hex, colors[pickerIndex].position, pickerIndex)
     }
@@ -64,8 +70,27 @@ export default function Wheel() {
         setSpinning(!spinning)
     }
 
+    const handleExport = () => {
+        console.log(colors)
+    }
+
     return (
         <div className={styles.container}>
+            <div className={styles.library}>
+                <div>
+                    {wheels.map((wheel) => {
+                        return (
+                            <div onClick={() => loadWheel(wheel)}>
+                                {wheel.name}
+                            </div>
+                        )
+                    })}
+                </div>
+                <div onClick={handleExport}>
+                    <br />
+                    export
+                </div>
+            </div>
             <div className={styles.wheelContainer}>
                 <div
                     className={styles.wheel}
