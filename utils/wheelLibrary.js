@@ -53,7 +53,7 @@ export default [
         ],
     },
     {
-        name: 'rainbow sort of',
+        name: 'rainbow flag',
         multiple: 1,
         colorList: [
             { color: '#ff0004', position: 0 },
@@ -62,6 +62,24 @@ export default [
             { color: '#01ff01', position: 50 },
             { color: '#0101ff', position: 66 },
             { color: '#9701ff', position: 83 },
+        ],
+    },
+    {
+        name: 'purple vs magenta',
+        multiple: 1,
+        colorList: [
+            { color: '#00ff00', position: 0 },
+            { color: '#000000', position: 10 },
+            { color: '#00ff00', position: 13 },
+            { color: '#000000', position: 21 },
+            { color: '#00ff00', position: 24 },
+            { color: '#000000', position: 28 },
+            { color: '#ff01ff', position: 50 },
+            { color: '#000000', position: 60 },
+            { color: '#ff01ff', position: 63 },
+            { color: '#000000', position: 71 },
+            { color: '#ff01ff', position: 74 },
+            { color: '#000000', position: 78 },
         ],
     },
 ]
