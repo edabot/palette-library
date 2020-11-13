@@ -40,4 +40,28 @@ export default [
             { color: '#010c19', position: 80 },
         ],
     },
+    {
+        name: 'rainbow',
+        multiple: 1,
+        colorList: [
+            { color: '#ff0004', position: 0 },
+            { color: '#ffff01', position: 16 },
+            { color: '#00ff00', position: 33 },
+            { color: '#01ffff', position: 50 },
+            { color: '#0101ff', position: 66 },
+            { color: '#ff01ff', position: 83 },
+        ],
+    },
+    {
+        name: 'rainbow sort of',
+        multiple: 1,
+        colorList: [
+            { color: '#ff0004', position: 0 },
+            { color: '#ff8001', position: 16 },
+            { color: '#ffff00', position: 33 },
+            { color: '#01ff01', position: 50 },
+            { color: '#0101ff', position: 66 },
+            { color: '#9701ff', position: 83 },
+        ],
+    },
 ]
