@@ -16,6 +16,7 @@
     padding: 2rem 0;
     width: 500px;
     border-radius: 10px;
+    transform: scaleX(-1);
 }
 
 .wheel {
