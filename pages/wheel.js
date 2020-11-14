@@ -11,10 +11,12 @@ const defaultColors = [
     {
         color: '#FF0000',
         position: 0,
+        leadingEdge: true,
     },
     {
         color: '#00FF00',
         position: 50,
+        leadingEdge: true,
     },
 ]
 
