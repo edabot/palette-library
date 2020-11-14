@@ -112,8 +112,10 @@ const wheelStyle = (colorArray, multiple) => {
         const item = newArray[i]
         const nextItem = newArray[i + 1]
         result += `${item.color} ${Math.floor(item.position * 10) / 10}%`
-        if (nextItem) {
+        if (nextItem && nextItem.leadingEdge) {
             result += ` ${Math.floor(nextItem.position * 10) / 10}%, `
+        } else if (nextItem) {
+            result += `, `
         }
     }
 
@@ -140,9 +142,10 @@ const wheelStyleFastLed = (colorArray, multiple, blocks) => {
 
     let result = ''
     for (let i = 0; i < newArray.length; i++) {
-        if (i > 0) {
+        const thisItem = newArray[i]
+        if (i > 0 && thisItem.leadingEdge) {
             const prevItem = newArray[i - 1]
-            prevItem.position = newArray[i].position
+            prevItem.position = thisItem.position
             result += processWheelColor(prevItem, { R: 2.6, G: 2.2, B: 2.5 })
             result += ',\n'
         }
@@ -174,6 +177,7 @@ const multiplyColorArray = (colorArray, multiple) => {
             return {
                 color: c.color,
                 position: (c.position + i * 100) / multiple,
+                leadingEdge: c.leadingEdge,
             }
         })
         newArray = [...newArray, ...newColorArray]

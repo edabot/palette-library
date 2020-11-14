@@ -49,6 +49,13 @@ export default function Wheel() {
         setColors(colorList)
     }
 
+    const updateEdge = (color, position, leadingEdge, index) => {
+        let colorList = [...colors]
+        colorList[index] = { color, position, leadingEdge }
+        colorList = sortColors(colorList)
+        setColors(colorList)
+    }
+
     const deleteColor = (index) => {
         let colorList = [...colors.slice(0, index), ...colors.slice(index + 1)]
         if (pickerIndex === colors.length - 1) {
@@ -112,6 +119,7 @@ export default function Wheel() {
                     colors={colors}
                     pickerIndex={pickerIndex}
                     updateColor={updateColor}
+                    updateEdge={updateEdge}
                     setPickerIndex={setPickerIndex}
                     copyColor={copyColor}
                     deleteColor={deleteColor}

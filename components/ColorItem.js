@@ -3,11 +3,13 @@ import styles from '../styles/Wheel.module.css'
 const ColorItem = ({
     color,
     position,
+    leadingEdge,
     index,
     pickerIndex,
     copyColor,
     updateColor,
     deleteColor,
+    updateEdge,
     setPickerIndex,
 }) => {
     const handlePositionChange = (e) => {
@@ -29,6 +31,12 @@ const ColorItem = ({
         e.preventDefault()
         updateColor(color, e.currentTarget[0].value, index)
         e.target.reset()
+    }
+
+    const handleEdgeChange = () => {
+        debugger
+        updateEdge(color, position, !leadingEdge, index)
+        console.log('edge change here')
     }
 
     const style = {}
@@ -62,6 +70,9 @@ const ColorItem = ({
                             onChange={handlePositionChange}
                         />
                     </form>
+                </div>
+                <div onClick={handleEdgeChange}>
+                    {leadingEdge ? 'edge' : 'blur'}
                 </div>
             </div>
             <div>

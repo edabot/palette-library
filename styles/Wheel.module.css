@@ -170,3 +170,7 @@
     right: 20px;
     top: 10px;
 }
+
+.library div {
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ const ColorItemList = ({
     colors,
     pickerIndex,
     updateColor,
+    updateEdge,
     setPickerIndex,
     copyColor,
     deleteColor,
@@ -17,6 +18,7 @@ const ColorItemList = ({
                     <ColorItem
                         color={color.color}
                         position={color.position}
+                        leadingEdge={color.leadingEdge}
                         index={index}
                         pickerIndex={pickerIndex}
                         key={index}
@@ -24,6 +26,7 @@ const ColorItemList = ({
                         setPickerIndex={setPickerIndex}
                         copyColor={copyColor}
                         deleteColor={deleteColor}
+                        updateEdge={updateEdge}
                     />
                 )
             })}
