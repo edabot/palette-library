@@ -112,7 +112,7 @@ export default function Wheel() {
                 </div>
             </div>
             <div onClick={changeSpinning} className={styles.spinButton}>
-                spin ↺
+                spin ⟳
             </div>
             <MultiplePicker setMultiple={setMultiple} multiple={multiple} />
 
