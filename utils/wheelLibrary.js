@@ -67,7 +67,7 @@ export default [
         ],
     },
     {
-        name: 'purple vs magenta',
+        name: 'green vs magenta',
         multiple: 1,
         colorList: [
             { color: '#00ff00', leadingEdge: true, position: 0 },
@@ -85,7 +85,7 @@ export default [
         ],
     },
     {
-        name: 'purple & magenta fireballs',
+        name: 'green & magenta fireballs',
         multiple: 1,
         colorList: [
             { color: '#ff00ff', leadingEdge: true, position: 0 },
