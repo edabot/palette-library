@@ -37,16 +37,16 @@ export default function Wheel() {
         setColors(colorList)
     }
 
-    const copyColor = (color, position) => {
+    const copyColor = (color, position, leadingEdge) => {
         let colorList = [...colors]
-        colorList.push({ color, position })
+        colorList.push({ color, position, leadingEdge })
         colorList = sortColors(colorList)
         setColors(colorList)
     }
 
-    const updateColor = (color, position, index) => {
+    const updateColor = (color, position, leadingEdge, index) => {
         let colorList = [...colors]
-        colorList[index] = { color, position: parseInt(position) }
+        colorList[index] = { color, position: parseInt(position), leadingEdge }
         colorList = sortColors(colorList)
         setColors(colorList)
     }

@@ -21,7 +21,7 @@ const ColorItem = ({
     }
 
     const handleCopyColor = () => {
-        copyColor(color, position)
+        copyColor(color, position, leadingEdge)
     }
     const handleDeleteColor = () => {
         deleteColor(index)
@@ -29,7 +29,7 @@ const ColorItem = ({
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        updateColor(color, e.currentTarget[0].value, index)
+        updateColor(color, e.currentTarget[0].value, leadingEdge, index)
         e.target.reset()
     }
 
