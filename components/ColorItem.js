@@ -34,7 +34,6 @@ const ColorItem = ({
     }
 
     const handleEdgeChange = () => {
-        debugger
         updateEdge(color, position, !leadingEdge, index)
         console.log('edge change here')
     }

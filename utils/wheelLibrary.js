@@ -26,6 +26,16 @@ export default [
         ],
     },
     {
+        name: 'cyan wave',
+        multiple: 3,
+        colorList: [
+            { color: '#00ffff', leadingEdge: true, position: 0 },
+            { color: '#006464', leadingEdge: true, position: 30 },
+            { color: '#003232', leadingEdge: true, position: 42 },
+            { color: '#000000', leadingEdge: true, position: 50 },
+        ],
+    },
+    {
         name: 'fireballs',
         multiple: 1,
         colorList: [
@@ -104,6 +114,27 @@ export default [
             { color: '#000000', leadingEdge: true, position: 80 },
         ],
     },
+
+    {
+        name: 'blue & yellow fireballs',
+        multiple: 1,
+        colorList: [
+            {color: "#0000ff", position: 0, leadingEdge: true},
+            {color: "#cacaff", position: 1, leadingEdge: true},
+            {color: "#7979fa", position: 4, leadingEdge: true},
+            {color: "#0000ff", position: 7, leadingEdge: false},
+            {color: "#0000bd", position: 10, leadingEdge: false},
+            {color: "#00006e", position: 20, leadingEdge: true},
+            {color: "#000000", leadingEdge: true, position: 30},
+            {color: "#ffff00", position: 50, leadingEdge: true},
+            {color: "#ffffd2", position: 51, leadingEdge: false},
+            {color: "#ffff45", position: 54, leadingEdge: true},
+            {color: "#ffff00", position: 57, leadingEdge: false},
+            {color: "#9b9b0b", position: 60, leadingEdge: false},
+            {color: "#5f5f0c", position: 70, leadingEdge: true},
+            {color: "#000000", leadingEdge: true, position: 80}
+        ],
+    },
     {
         name: 'disney plus',
         multiple: 1,
@@ -130,4 +161,43 @@ export default [
             { color: '#000000', position: 88, leadingEdge: true },
         ],
     },
+    {
+        name: 'CMY chase',
+        multiple: 1,
+        colorList: [
+            {color: "#00ffff", leadingEdge: true, position: 0},
+            {color: "#006464", position: 10, leadingEdge: false},
+            {color: "#003232", position: 14, leadingEdge: false},
+            {color: "#000000", position: 32, leadingEdge: true},
+            {color: "#ff00ff", position: 33, leadingEdge: true},
+            {color: "#640064", position: 43, leadingEdge: false},
+            {color: "#320032", position: 47, leadingEdge: false},
+            {color: "#000000", position: 66, leadingEdge: true},
+            {color: "#ffff00", position: 67, leadingEdge: true},
+            {color: "#646400", position: 76, leadingEdge: false},
+            {color: "#323200", position: 80, leadingEdge: false},
+            {color: "#000000", position: 100, leadingEdge: true}
+        ],
+    },
+    {
+        name: 'RGB chase',
+        multiple: 1,
+        colorList: [
+        
+            {color: "#0000ff", position: 0, leadingEdge: true},
+            {color: "#000064", position: 10, leadingEdge: false},
+            {color: "#000032", position: 14, leadingEdge: false},
+            {color: "#000000", position: 32, leadingEdge: true},
+            {color: "#ff0000", position: 33, leadingEdge: true},
+            {color: "#640000", position: 43, leadingEdge: false},
+            {color: "#320000", position: 47, leadingEdge: false},
+            {color: "#000000", position: 66, leadingEdge: true},
+            {color: "#00ff00", position: 67, leadingEdge: true},
+            {color: "#006400", position: 76, leadingEdge: false},
+            {color: "#003200", position: 80, leadingEdge: false},
+            {color: "#000000", position: 100, leadingEdge: true}
+        ],
+    },
 ]
+
+
