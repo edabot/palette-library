@@ -72,7 +72,7 @@ export default function Wheel() {
     }
 
     const handleChangeComplete = (color) => {
-        updateColor(color.hex, colors[pickerIndex].position, pickerIndex)
+        updateColor(color.hex, colors[pickerIndex].position, colors[pickerIndex].leadingEdge, pickerIndex)
     }
 
     const changeSpinning = () => {
