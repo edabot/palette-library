@@ -77,6 +77,35 @@ export default [
         ],
     },
     {
+        name: 'rainbow flag split',
+        multiple: 1,
+        colorList: [
+            {color: "#ff0004", leadingEdge: true, position: 0},
+            {color: "#000000", position: 12, leadingEdge: true},
+            {color: "#ff8001", leadingEdge: true, position: 16},
+            {color: "#000000", position: 29, leadingEdge: true},
+            {color: "#ffff00", leadingEdge: true, position: 33},
+            {color: "#000000", position: 46, leadingEdge: true},
+            {color: "#01ff01", leadingEdge: true, position: 50},
+            {color: "#000000", position: 62, leadingEdge: true},
+            {color: "#0101ff", leadingEdge: true, position: 66},
+            {color: "#000000", position: 79, leadingEdge: true},
+            {color: "#9701ff", leadingEdge: true, position: 83},
+            {color: "#000000", position: 96, leadingEdge: true}
+        ],
+    },
+    {
+        name: 'trans flag',
+        multiple: 2,
+        colorList: [
+            {color: "#4cf5f9", position: 0, leadingEdge: true},
+            {color: "#f098ac", position: 20, leadingEdge: true},
+            {color: "#ffffff", position: 40, leadingEdge: true},
+            {color: "#f098ac", position: 60, leadingEdge: true},
+            {color: "#4cf5f9", position: 80, leadingEdge: true}
+        ],
+    },
+    {
         name: 'green vs magenta',
         multiple: 1,
         colorList: [
@@ -198,6 +227,25 @@ export default [
             {color: "#000000", position: 100, leadingEdge: true}
         ],
     },
+    {
+        name: 'RGB wave',
+        multiple: 1,
+        colorList: [
+            {color: "#0000ff", position: 0, leadingEdge: true},
+            {color: "#000064", position: 10, leadingEdge: true},
+            {color: "#000032", position: 14, leadingEdge: true},
+            {color: "#000000", position: 16, leadingEdge: true},
+            {color: "#ff0000", position: 33, leadingEdge: true},
+            {color: "#640000", position: 43, leadingEdge: true},
+            {color: "#320000", position: 47, leadingEdge: true},
+            {color: "#000000", position: 50, leadingEdge: true},
+            {color: "#00ff00", position: 67, leadingEdge: true},
+            {color: "#006400", position: 76, leadingEdge: true},
+            {color: "#003200", position: 80, leadingEdge: true},
+            {color: "#000000", position: 84, leadingEdge: true}
+        ],
+    },
+
 ]
 
 
