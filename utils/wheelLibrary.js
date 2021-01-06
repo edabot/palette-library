@@ -106,6 +106,18 @@ export default [
         ],
     },
     {
+        name: 'trans flag split',
+        multiple: 2,
+        colorList: [
+            {color: "#4cf5f9", position: 0, leadingEdge: true},
+            {color: "#f098ac", position: 16, leadingEdge: true},
+            {color: "#ffffff", position: 32, leadingEdge: true},
+            {color: "#f098ac", position: 48, leadingEdge: true},
+            {color: "#4cf5f9", position: 64, leadingEdge: true},
+            {color: "#000000", position: 80, leadingEdge: true}
+        ],
+    },
+    {
         name: 'green vs magenta',
         multiple: 1,
         colorList: [
