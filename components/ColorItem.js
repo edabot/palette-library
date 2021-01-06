@@ -2,6 +2,7 @@ import styles from '../styles/Wheel.module.css'
 
 const ColorItem = ({
     color,
+    colorCount,
     position,
     leadingEdge,
     index,
@@ -21,7 +22,9 @@ const ColorItem = ({
         copyColor(color, position, leadingEdge)
     }
     const handleDeleteColor = () => {
-        deleteColor(index)
+        if (colorCount > 1) {
+            deleteColor(index)
+        }
     }
 
     const handleSubmit = (e) => {

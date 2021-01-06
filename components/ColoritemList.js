@@ -17,6 +17,7 @@ const ColorItemList = ({
                 return (
                     <ColorItem
                         color={color.color}
+                        colorCount={colors.length}
                         position={color.position}
                         leadingEdge={color.leadingEdge}
                         index={index}
