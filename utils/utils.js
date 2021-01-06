@@ -100,10 +100,20 @@ const paletteNameConverter = (name) => {
     return name.replace(/\s/g, '_').toLowerCase() + '_gp'
 }
 
-const wheelStyle = (colorArray, multiple) => {
+const wheelStyle = (colorArray, multiple, gap) => {
     let newArray = [...colorArray].filter(
         (x) => typeof x.position !== 'undefined'
     )
+    if (gap > 0) {
+        let gapAdjustment = (100 - gap) / 100
+        newArray = newArray.map(x => {
+            let result = { ...x };
+            result.position = x.position * gapAdjustment;
+            return result;
+        })
+        newArray.push({color: "#000000", position: 100 - gap, leadingEdge: true})
+    }
+
     newArray = multiplyColorArray(newArray, multiple)
 
     let result = 'conic-gradient('

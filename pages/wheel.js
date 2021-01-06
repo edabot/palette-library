@@ -29,6 +29,7 @@ export default function Wheel() {
     const [pickerIndex, setPickerIndex] = useState(0)
     const [spinning, setSpinning] = useState(false)
     const [multiple, setMultiple] = useState(2)
+    const [gap, setGap] = useState(0);
 
     const addColor = () => {
         let colorList = [...colors]
@@ -66,9 +67,10 @@ export default function Wheel() {
         setColors(colorList)
     }
 
-    const loadWheel = ({ multiple, colorList }) => {
+    const loadWheel = ({ multiple, colorList, gap }) => {
         setMultiple(multiple)
         setColors(colorList)
+        if (gap) {setGap(gap)} else {setGap(0)}
     }
 
     const handleChangeComplete = (color) => {
@@ -77,6 +79,12 @@ export default function Wheel() {
 
     const changeSpinning = () => {
         setSpinning(!spinning)
+    }
+
+    const handleGapSubmit = (e) => {
+        e.preventDefault()
+        setGap(parseInt(e.target[0].value))
+        e.target.reset()
     }
 
     const handleExport = () => {
@@ -89,7 +97,7 @@ export default function Wheel() {
                 <div>
                     {wheels.map((wheel) => {
                         return (
-                            <div onClick={() => loadWheel(wheel)}>
+                            <div onClick={() => loadWheel(wheel)} key={wheel.name}>
                                 {wheel.name}
                             </div>
                         )
@@ -104,7 +112,7 @@ export default function Wheel() {
                 <div
                     className={styles.wheel}
                     style={{
-                        background: wheelStyle(colors, multiple),
+                        background: wheelStyle(colors, multiple, gap),
                         animation: spinning ? '' : 'x',
                     }}
                 >
@@ -115,7 +123,17 @@ export default function Wheel() {
                 spin ⟳
             </div>
             <MultiplePicker setMultiple={setMultiple} multiple={multiple} />
-
+            <div>
+            <form onSubmit={handleGapSubmit}>
+                        <span>gap:</span>
+                        <input
+                            placeholder={gap}
+                            type="number"
+                            min="0"
+                            max="50"
+                        />
+            </form>
+            </div>
             <div className={styles.colorArea}>
                 <ColoritemList
                     colors={colors}

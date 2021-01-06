@@ -106,15 +106,15 @@ export default [
         ],
     },
     {
-        name: 'trans flag split',
+        name: 'trans flag with gap',
         multiple: 2,
+        gap: 20,
         colorList: [
             {color: "#4cf5f9", position: 0, leadingEdge: true},
-            {color: "#f098ac", position: 16, leadingEdge: true},
-            {color: "#ffffff", position: 32, leadingEdge: true},
-            {color: "#f098ac", position: 48, leadingEdge: true},
-            {color: "#4cf5f9", position: 64, leadingEdge: true},
-            {color: "#000000", position: 80, leadingEdge: true}
+            {color: "#f098ac", position: 20, leadingEdge: true},
+            {color: "#ffffff", position: 40, leadingEdge: true},
+            {color: "#f098ac", position: 60, leadingEdge: true},
+            {color: "#4cf5f9", position: 80, leadingEdge: true}
         ],
     },
     {

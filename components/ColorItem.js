@@ -12,9 +12,6 @@ const ColorItem = ({
     updateEdge,
     setPickerIndex,
 }) => {
-    const handlePositionChange = (e) => {
-        console.log('old')
-    }
 
     const handleDivClick = () => {
         setPickerIndex(index)
@@ -66,7 +63,6 @@ const ColorItem = ({
                             type="number"
                             min="0"
                             max="100"
-                            onChange={handlePositionChange}
                         />
                     </form>
                 </div>
