@@ -195,9 +195,20 @@ const multiplyColorArray = (colorArray, multiple) => {
     return newArray
 }
 
+const exportWheel = (colors, multiple, gap) => {
+    let result = {
+        name: "name",
+        multiple,
+        gap,
+        colorList: colors
+    }
+    console.log(JSON.stringify(result, null, 2))
+}
+
 export {
     adjustGamma,
     CSSToFastLED,
+    exportWheel,
     paletteStringToString,
     paletteToString,
     paletteToStyle,

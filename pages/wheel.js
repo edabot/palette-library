@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styles from '../styles/Wheel.module.css'
-import { wheelStyle, wheelStyleFastLed } from '../utils/utils'
+import { exportWheel, wheelStyle, wheelStyleFastLed } from '../utils/utils'
 import { ChromePicker } from 'react-color'
 import MultiplePicker from '../components/MultiplePicker'
 import ColoritemList from '../components/ColoritemList'
@@ -88,7 +88,7 @@ export default function Wheel() {
     }
 
     const handleExport = () => {
-        console.log(colors)
+        exportWheel(colors, multiple, gap)
     }
 
     return (
