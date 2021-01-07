@@ -257,6 +257,33 @@ export default [
             {color: "#000000", position: 84, leadingEdge: true}
         ],
     },
+    {
+        "name": "picnic",
+        "multiple": "5",
+        "gap": 0,
+        "colorList": [
+          {
+            "color": "#aed37a",
+            "position": 0,
+            "leadingEdge": true
+          },
+          {
+            "color": "#f1f0a0",
+            "position": 35,
+            "leadingEdge": true
+          },
+          {
+            "color": "#fede86",
+            "position": 50,
+            "leadingEdge": true
+          },
+          {
+            "color": "#f1f0a0",
+            "position": 85,
+            "leadingEdge": true
+          }
+        ]
+      }
 
 ]
 
