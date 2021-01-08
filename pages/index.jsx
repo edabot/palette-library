@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styles from '../styles/Home.module.css'
 import { palettes } from '../utils/palettes'
 import { paletteToStyle, paletteNameConverter } from '../utils/utils'
@@ -49,9 +50,20 @@ const Palette = ({ style, name, data }) => {
   )
 }
 
+Palette.propTypes = {
+  style: PropTypes.objectOf(PropTypes.object).isRequired,
+  name: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+}
+
 const CopyPalette = ({ name, data }) => {
   const convertedData = `// converted for FastLED with gammas (2.6, 2.2, 2.5)\n\nDEFINE_GRADIENT_PALETTE( ${paletteNameConverter(
     name
   )} ) {\n${data}};`
   return <CopyButton text={`copy ${name} for FastLED`} data={convertedData} />
+}
+
+CopyPalette.propTypes = {
+  name: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

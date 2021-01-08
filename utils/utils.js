@@ -1,3 +1,4 @@
+/* global navigator */
 const rgamma = 2.6
 const ggamma = 2.2
 const bgamma = 2.5
@@ -40,11 +41,11 @@ const CSSToFastLED = (string, gammas) => {
   const last = arr[arr.length - 1]
 
   if (!first.endsWith(' 0')) {
-    const newFirst = first.substring(0, first.lastIndexOf(' ')) + ' 0'
+    const newFirst = `${first.substring(0, first.lastIndexOf(' '))}`
     arr.unshift(newFirst)
   }
   if (!last.endsWith('100')) {
-    const newLast = last.substring(0, last.lastIndexOf(' ')) + ' 100'
+    const newLast = `${last.substring(0, last.lastIndexOf(' '))} 100`
     arr.push(newLast)
   }
   let result = ''
@@ -60,7 +61,7 @@ const CSSToFastLED = (string, gammas) => {
 
 const paletteToStyle = (paletteArray) => {
   let result = 'linear-gradient(90deg'
-  for (let i = 0; i < paletteArray.length; i = i + 4) {
+  for (let i = 0; i < paletteArray.length; i += 4) {
     const percent = Math.trunc(paletteArray[i] / 0.255) / 10
     const ungammaR = adjustGamma(paletteArray[i + 1], 1 / rgamma)
     const ungammaG = adjustGamma(paletteArray[i + 2], 1 / bgamma)
@@ -87,14 +88,7 @@ const paletteStringToString = (string) => {
 }
 
 const updateClipboard = (newClip) => {
-  navigator.clipboard.writeText(newClip).then(
-    function () {
-      /* clipboard successfully set */
-    },
-    function () {
-      /* clipboard write failed */
-    }
-  )
+  navigator.clipboard.writeText(newClip)
 }
 
 const multiplyColorArray = (colorArray, multiple) => {
@@ -113,7 +107,7 @@ const multiplyColorArray = (colorArray, multiple) => {
 }
 
 const paletteNameConverter = (name) => {
-  return name.replace(/\s/g, '_').toLowerCase() + '_gp'
+  return `${name.replace(/\s/g, '_').toLowerCase()}_gp`
 }
 
 const wheelStyle = (colorArray, multiple, gap) => {
@@ -151,6 +145,17 @@ const wheelStyle = (colorArray, multiple, gap) => {
 
   result += ')'
   return result
+}
+
+const processWheelColor = (item, gammas) => {
+  const position = Math.round(parseInt(item.position, 10) * 2.55)
+  const hex = item.color
+
+  const gammaR = adjustGamma(parseInt(hex.substring(1, 3), 16), gammas.R)
+  const gammaG = adjustGamma(parseInt(hex.substring(3, 5), 16), gammas.G)
+  const gammaB = adjustGamma(parseInt(hex.substring(5, 7), 16), gammas.B)
+
+  return `${position}, ${gammaR}, ${gammaG}, ${gammaB}`
 }
 
 const wheelStyleFastLed = (colorArray, multiple, gap) => {
@@ -201,17 +206,6 @@ const wheelStyleFastLed = (colorArray, multiple, gap) => {
   return result
 }
 
-const processWheelColor = (item, gammas) => {
-  const position = Math.round(parseInt(item.position, 10) * 2.55)
-  const hex = item.color
-
-  const gammaR = adjustGamma(parseInt(hex.substring(1, 3), 16), gammas.R)
-  const gammaG = adjustGamma(parseInt(hex.substring(3, 5), 16), gammas.G)
-  const gammaB = adjustGamma(parseInt(hex.substring(5, 7), 16), gammas.B)
-
-  return position + ', ' + gammaR + ', ' + gammaG + ', ' + gammaB
-}
-
 const exportWheel = (colors, multiple, gap) => {
   const result = {
     name: 'name',
@@ -219,6 +213,7 @@ const exportWheel = (colors, multiple, gap) => {
     gap,
     colorList: colors,
   }
+  // eslint-disable-next-line
   console.log(JSON.stringify(result, null, 2))
 }
 
