@@ -3,11 +3,7 @@ export default [
     name: 'candy cane',
     multiple: 5,
     colorList: [
-      {
-        color: '#FF0000',
-        leadingEdge: true,
-        position: 0,
-      },
+      { color: '#FF0000', leadingEdge: true, position: 0 },
       {
         color: '#FFFFFF',
         leadingEdge: true,

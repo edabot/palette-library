@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import styles from '../styles/Wheel.module.css'
-import { exportWheel, wheelStyle, wheelStyleFastLed } from '../utils/utils'
 import { ChromePicker } from 'react-color'
+import { exportWheel, wheelStyle, wheelStyleFastLed } from '../utils/utils'
+import styles from '../styles/Wheel.module.css'
 import MultiplePicker from '../components/MultiplePicker'
 import ColoritemList from '../components/ColoritemList'
 import CopyButton from '../components/CopyButton'
@@ -47,7 +47,7 @@ export default function Wheel() {
 
   const updateColor = (color, position, leadingEdge, index) => {
     let colorList = [...colors]
-    colorList[index] = { color, position: parseInt(position), leadingEdge }
+    colorList[index] = { color, position: parseInt(position, 10), leadingEdge }
     colorList = sortColors(colorList)
     setColors(colorList)
   }
@@ -60,7 +60,7 @@ export default function Wheel() {
   }
 
   const deleteColor = (index) => {
-    let colorList = [...colors.slice(0, index), ...colors.slice(index + 1)]
+    const colorList = [...colors.slice(0, index), ...colors.slice(index + 1)]
     if (pickerIndex === colors.length - 1) {
       setPickerIndex(pickerIndex - 1)
     }
@@ -92,7 +92,7 @@ export default function Wheel() {
 
   const handleGapSubmit = (e) => {
     e.preventDefault()
-    setGap(parseInt(e.target[0].value))
+    setGap(parseInt(e.target[0].value, 10))
     e.target.reset()
   }
 
@@ -125,7 +125,7 @@ export default function Wheel() {
             animation: spinning ? '' : 'x',
           }}
         >
-          <div className={styles.wheelCenter}></div>
+          <div className={styles.wheelCenter} />
         </div>
       </div>
       <div onClick={changeSpinning} className={styles.spinButton}>
@@ -159,11 +159,11 @@ export default function Wheel() {
         <div className={styles.wheelCSS}>{wheelStyle(colors, multiple)}</div>
         <div className={styles.converterResult}>
           <CopyButton
-            text={'copy FastLED code'}
-            data={wheelStyleFastLed(colors, multiple, true)}
+            text="copy FastLED code"
+            data={wheelStyleFastLed(colors, multiple, gap)}
           />
           <br />
-          {wheelStyleFastLed(colors, multiple, true)}
+          {wheelStyleFastLed(colors, multiple, gap)}
         </div>
       </div>
     </div>
