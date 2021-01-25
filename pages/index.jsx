@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from '../styles/Home.module.css'
-import { palettes } from '../utils/palettes'
+import palettes from '../utils/palettes'
 import { paletteToStyle, paletteNameConverter } from '../utils/utils'
 import CopyButton from '../components/CopyButton'
 import { CSSConverter } from '../components/CSSConverter'

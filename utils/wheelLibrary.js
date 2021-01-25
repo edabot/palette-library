@@ -331,4 +331,177 @@ export default [
       },
     ],
   },
+
+  {
+    name: 'shirt - rear hub',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c34545',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#a0a0a0',
+        position: 14,
+        leadingEdge: true,
+      },
+      {
+        color: '#c7d21d',
+        position: 50,
+        leadingEdge: true,
+      },
+      {
+        color: '#4c7488',
+        position: 73,
+        leadingEdge: true,
+      },
+      {
+        color: '#4abaf8',
+        position: 77,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'shirt - front tire',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c34545',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#a0a0a0',
+        position: 20,
+        leadingEdge: true,
+      },
+      {
+        color: '#c7d21d',
+        position: 20,
+        leadingEdge: true,
+      },
+      {
+        color: '#c34545',
+        position: 36,
+        leadingEdge: true,
+      },
+      {
+        color: '#4abaf8',
+        position: 50,
+        leadingEdge: true,
+      },
+      {
+        color: '#4c7488',
+        position: 65,
+        leadingEdge: true,
+      },
+      {
+        color: '#000000',
+        position: 80,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'shirt - front hub',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c7d21d',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#1e3f52',
+        position: 52,
+        leadingEdge: true,
+      },
+      {
+        color: '#fc8121',
+        position: 68,
+        leadingEdge: true,
+      },
+      {
+        color: '#a0a0a0',
+        position: 80,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'shirt - front chainring',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c34545',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#4abaf8',
+        position: 65,
+        leadingEdge: true,
+      },
+      {
+        color: '#fc8121',
+        position: 90,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'shirt - handlebars big',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c7d21d',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#4abaf8',
+        position: 50,
+        leadingEdge: true,
+      },
+      {
+        color: '#c7d21d',
+        position: 58,
+        leadingEdge: true,
+      },
+      {
+        color: '#c34545',
+        position: 75,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'bike - handlebars small',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#c34545',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#4abaf8',
+        position: 73,
+        leadingEdge: true,
+      },
+      {
+        color: '#fc8121',
+        position: 80,
+        leadingEdge: true,
+      },
+    ],
+  },
 ]

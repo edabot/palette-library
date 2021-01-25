@@ -1,5 +1,5 @@
 // prettier-ignore
-export const palettes = [
+export default [
   {
     name: "fireball",
     data: [
