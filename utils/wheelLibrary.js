@@ -567,7 +567,7 @@ export default [
     ],
   },
   {
-    name: 'flag - netherlands france',
+    name: 'flag - netherlands france usa',
     multiple: '3',
     gap: 30,
     colorList: [
@@ -585,6 +585,78 @@ export default [
         color: '#0000ff',
         position: 67,
         leadingEdge: true,
+      },
+    ],
+  },
+
+  {
+    name: 'fireball',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#ea6b01',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#f7e349',
+        position: 1,
+        leadingEdge: false,
+      },
+      {
+        color: '#f7e349',
+        position: 6,
+        leadingEdge: false,
+      },
+      {
+        color: '#ffd907',
+        position: 10,
+      },
+      {
+        color: '#960101',
+        position: 50,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 80,
+      },
+    ],
+  },
+
+  {
+    name: 'fireball green',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#01ed33',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#61ede9',
+        position: 1,
+        leadingEdge: false,
+      },
+      {
+        color: '#45abf7',
+        position: 5,
+        leadingEdge: false,
+      },
+      {
+        color: '#06ff90',
+        position: 10,
+      },
+      {
+        color: '#01a201',
+        position: 50,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 80,
       },
     ],
   },
