@@ -660,4 +660,168 @@ export default [
       },
     ],
   },
+  {
+    name: 'fireball - purple',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#fb00ff',
+        position: 0,
+        leadingEdge: false,
+      },
+      {
+        color: '#f8dafa',
+        position: 1,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffdaf9',
+        position: 10,
+        leadingEdge: false,
+      },
+      {
+        color: '#7e0162',
+        position: 15,
+      },
+      {
+        color: '#960165',
+        position: 50,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 80,
+      },
+    ],
+  },
+  {
+    name: 'sparks - yellow red',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#ffffff',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 5,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffd316',
+        position: 20,
+        leadingEdge: false,
+      },
+      {
+        color: '#ff0201',
+        position: 80,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 100,
+        leadingEdge: false,
+      },
+    ],
+  },
+
+  {
+    name: 'sparks - cyan green',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#ffffff',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 5,
+        leadingEdge: true,
+      },
+      {
+        color: '#14f4ff',
+        position: 20,
+        leadingEdge: false,
+      },
+      {
+        color: '#04ff01',
+        position: 80,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 100,
+        leadingEdge: false,
+      },
+    ],
+  },
+  {
+    name: 'sparks - magenta',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#ffffff',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 5,
+        leadingEdge: false,
+      },
+      {
+        color: '#ff14f7',
+        position: 20,
+        leadingEdge: false,
+      },
+      {
+        color: '#010d64',
+        position: 80,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 100,
+        leadingEdge: false,
+      },
+    ],
+  },
+  {
+    name: 'sparks - green',
+    multiple: '1',
+    gap: 0,
+    colorList: [
+      {
+        color: '#ffffff',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 5,
+        leadingEdge: false,
+      },
+      {
+        color: '#14ff1c',
+        position: 20,
+        leadingEdge: false,
+      },
+      {
+        color: '#010d64',
+        position: 80,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 100,
+        leadingEdge: false,
+      },
+    ],
+  },
 ]
