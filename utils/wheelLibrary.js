@@ -93,17 +93,6 @@ export default [
   {
     name: 'trans flag',
     multiple: 2,
-    colorList: [
-      { color: '#4cf5f9', position: 0, leadingEdge: true },
-      { color: '#f098ac', position: 20, leadingEdge: true },
-      { color: '#ffffff', position: 40, leadingEdge: true },
-      { color: '#f098ac', position: 60, leadingEdge: true },
-      { color: '#4cf5f9', position: 80, leadingEdge: true },
-    ],
-  },
-  {
-    name: 'trans flag with gap',
-    multiple: 2,
     gap: 20,
     colorList: [
       { color: '#4cf5f9', position: 0, leadingEdge: true },
@@ -175,14 +164,43 @@ export default [
   {
     name: 'disney plus',
     multiple: 1,
+    gap: 10,
     colorList: [
-      { color: '#ffffff', leadingEdge: true, position: 0 },
-      { color: '#c4f9fa', leadingEdge: true, position: 3 },
-      { color: '#30f8fa', leadingEdge: false, position: 7 },
-      { color: '#1172c9', leadingEdge: false, position: 14 },
-      { color: '#0847ab', leadingEdge: false, position: 20 },
-      { color: '#0b1152', leadingEdge: false, position: 30 },
-      { color: '#000000', leadingEdge: false, position: 70 },
+      {
+        color: '#ffffff',
+        leadingEdge: true,
+        position: 0,
+      },
+      {
+        color: '#c4f9fa',
+        position: 6,
+        leadingEdge: true,
+      },
+      {
+        color: '#30f8fa',
+        position: 14,
+        leadingEdge: false,
+      },
+      {
+        color: '#1172c9',
+        position: 28,
+        leadingEdge: false,
+      },
+      {
+        color: '#0847ab',
+        position: 40,
+        leadingEdge: false,
+      },
+      {
+        color: '#0b1152',
+        position: 60,
+        leadingEdge: false,
+      },
+      {
+        color: '#000000',
+        position: 100,
+        leadingEdge: false,
+      },
     ],
   },
   {
@@ -483,7 +501,7 @@ export default [
     ],
   },
   {
-    name: 'bike - handlebars small',
+    name: 'shirt - handlebars small',
     multiple: '1',
     gap: 0,
     colorList: [
@@ -500,6 +518,72 @@ export default [
       {
         color: '#fc8121',
         position: 80,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'flag - italy mexico',
+    multiple: '3',
+    gap: 30,
+    colorList: [
+      {
+        color: '#0d6c04',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 33,
+        leadingEdge: true,
+      },
+      {
+        color: '#f20007',
+        position: 67,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'flag - ireland india',
+    multiple: '3',
+    gap: 30,
+    colorList: [
+      {
+        color: '#1b8d50',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 33,
+        leadingEdge: true,
+      },
+      {
+        color: '#fc7330',
+        position: 67,
+        leadingEdge: true,
+      },
+    ],
+  },
+  {
+    name: 'flag - netherlands france',
+    multiple: '3',
+    gap: 30,
+    colorList: [
+      {
+        color: '#ff0000',
+        position: 0,
+        leadingEdge: true,
+      },
+      {
+        color: '#ffffff',
+        position: 33,
+        leadingEdge: true,
+      },
+      {
+        color: '#0000ff',
+        position: 67,
         leadingEdge: true,
       },
     ],

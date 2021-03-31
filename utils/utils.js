@@ -214,7 +214,9 @@ const exportWheel = (colors, multiple, gap) => {
     colorList: colors,
   }
   // eslint-disable-next-line
-  console.log(JSON.stringify(result, null, 2))
+  const resultJson = JSON.stringify(result, null, 2)
+  console.log(resultJson)
+  updateClipboard(resultJson)
 }
 
 export {
